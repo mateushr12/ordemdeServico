@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api")
 public class OrdemController {
 
@@ -54,7 +55,14 @@ public class OrdemController {
 
     @PostMapping("/ordem")
     public ResponseEntity<Ordem> createOrdem (@Valid @RequestBody Ordem ordem){
-        //return ordemRepository.save(ordem);
+
+        /**Ordem ordem1 = new Ordem();
+        ordem1.setData(ordem.getData());
+        ordem1.setPacienteId(ordem.getPacienteId());
+        ordem1.setConvenio(ordem.getConvenio());
+        ordem1.setPostocoletaId(ordem.getPostocoletaId());
+        ordem1.setMedicoId(ordem.getMedicoId());
+        ordem1.setExames(ordem.getExames());**/
         Ordem ordemSalva = ordemRepository.save(ordem);
         if(ordemRepository.findById(ordemSalva.getId()).isPresent())
             return new ResponseEntity<Ordem>(ordemSalva, HttpStatus.OK);

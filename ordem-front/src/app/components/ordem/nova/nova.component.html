@@ -1,0 +1,70 @@
+<app-menu></app-menu>
+<div class="formulario">
+    <h1>Novo Ordem de Serviço</h1>
+    <form [formGroup]="formulario">
+        <p>
+            <mat-form-field appearance="outline" style="width: 44.5%; max-width: 600px;">
+                <mat-label class="required">Paciente:</mat-label>
+                <mat-select formControlName="pacienteId">
+                    <mat-option>---</mat-option>
+                    <mat-option *ngFor="let pacientes of pacientes_list" [value]="pacientes.id">
+                        {{pacientes.nome}}
+                    </mat-option>                    
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" style="width: 20%; max-width: 300px;">
+                <mat-label class="required">Data:</mat-label>
+                <input class="input-data" matInput formControlName="data" [matDatepicker]="picker" >
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker disabled="false"></mat-datepicker>                
+            </mat-form-field>                  
+        </p>
+        <p>
+            <mat-form-field appearance="outline" style="width: 50%; max-width: 700px;">
+                <mat-label class="required">Convênio</mat-label>
+                <input matInput formControlName="convenio">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline" style="width: 44.5%; max-width: 600px;">
+                <mat-label class="required">Posto de Coleta:</mat-label>
+                <mat-select formControlName="postocoletaId">
+                    <mat-option>---</mat-option>
+                    <mat-option *ngFor="let postos of postos_list" [value]="postos.id">
+                        {{postos.descricao}}
+                    </mat-option>             
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="width: 44.5%; max-width: 600px;">
+                <mat-label class="required">Médico:</mat-label>
+                <mat-select formControlName="medicoId">
+                    <mat-option>---</mat-option>
+                    <mat-option *ngFor="let med of medicos" [value]="med.id">
+                        {{med.nome}}
+                    </mat-option>                     
+                </mat-select>
+            </mat-form-field>
+        </p>
+        <p>                        
+            <mat-form-field appearance="outline" style="width: 620px;">
+                <mat-label class="required">Exames:</mat-label>
+                <mat-select multiple formControlName="exame">                
+                  <mat-option *ngFor="let e of exames_list" [value]="e.id">{{e.descricao}}</mat-option>
+                </mat-select>
+            </mat-form-field>        
+        </p>
+    </form>
+    <br>
+    <div class="footer-button">
+        <button mat-button mat-raised-button color="primary" (click)="salvar()">
+            Salvar
+            <mat-icon>save</mat-icon>
+        </button>
+        <button mat-button mat-raised-button style="background-color: orangered;">
+            <mat-icon>remove_circle_outline</mat-icon>
+            Limpar
+        </button>
+    </div>
+
+</div>

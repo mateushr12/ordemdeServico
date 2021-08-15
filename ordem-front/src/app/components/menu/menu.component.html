@@ -1,0 +1,11 @@
+<div class="content">
+  <mat-toolbar>
+    <button mat-button [matMenuTriggerFor]="menuPacientes">Ordem de Serviço</button>
+    <mat-menu #menuPacientes="matMenu">
+      <button mat-menu-item routerLink="/ordemNova">
+        <mat-icon>person_add</mat-icon>
+        Cadastrar
+      </button>    
+    </mat-menu>
+  </mat-toolbar>
+</div>

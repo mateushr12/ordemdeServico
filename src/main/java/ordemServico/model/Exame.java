@@ -9,6 +9,8 @@ import java.util.Set;
 @Table(name = "tb_exame")
 public class Exame {
 
+    public Exame() {}
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     private Long id;

@@ -8,6 +8,8 @@ import javax.persistence.*;
 @Table(name = "tb_ordem_exame")
 public class OrdemExame {
 
+    public OrdemExame() {}
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     private Long id;
@@ -20,7 +22,36 @@ public class OrdemExame {
     @JoinColumn(name = "exame_id")
     private Exame exameId;
 
-    @NotNull
-    private Double preco;
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Ordem getOrdemId() {
+        return ordemId;
+    }
+
+    public void setOrdemId(Ordem ordemId) {
+        this.ordemId = ordemId;
+    }
+
+    public Exame getExameId() {
+        return exameId;
+    }
+
+    public void setExameId(Exame exameId) {
+        this.exameId = exameId;
+    }
+
+    @Override
+    public String toString() {
+        return "OrdemExame{" +
+                "id=" + getId() +
+                ", ordemId=" + getOrdemId() +
+                ", exameId=" + getExameId() +
+                '}';
+    }
 }

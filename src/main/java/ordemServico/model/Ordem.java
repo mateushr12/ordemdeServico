@@ -11,6 +11,8 @@ import java.util.Set;
 @Table(name = "tb_ordem")
 public class Ordem {
 
+    public Ordem() {}
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     private Long id;
@@ -18,7 +20,7 @@ public class Ordem {
     @NotNull
     private LocalDate data;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "paciente_id")
     private Paciente pacienteId;
 
@@ -59,7 +61,7 @@ public class Ordem {
         return pacienteId;
     }
 
-    public void setPacienteId(Paciente pacienteId) {
+    public void setPacienteId( Integer id) {
         this.pacienteId = pacienteId;
     }
 
